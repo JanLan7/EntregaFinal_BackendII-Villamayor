@@ -1,0 +1,28 @@
+<h2>Mi perfil</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <img src="{{user.profile_pic}}" class="rounded-circle mb-3" alt="{{user.first_name}}" style="width: 150px; height: 150px; object-fit: cover;">
+                <h3>{{user.first_name}} {{user.last_name}}</h3>
+                <p class="text-muted">{{user.email}}</p>
+                <p><i class="fas fa-birthday-cake"></i> {{user.age}} años</p>
+                <a href="/api/sessions/logout" class="btn btn-danger w-100">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="mb-4">Actividad Reciente</h4>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> 
+                    ¡Bienvenido a tu perfil!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

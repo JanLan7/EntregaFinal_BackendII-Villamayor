@@ -1,0 +1,41 @@
+<h2>Servicios</h2>
+<a href="/products/servicios" class="btn btn-primary mb-3">Ver Servicios</a>
+<div class="row">
+    {{#each services}}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                    <p><strong>Precio:</strong> ${{this.price}}</p>
+                    <form action="/api/carts/{{user.cart}}/products" method="POST">
+                        <input type="hidden" name="productId" value="{{this._id}}">
+                        <input type="number" name="quantity" class="form-control mb-2" placeholder="Cantidad" min="1" max="{{this.stock}}" required>
+                        <button type="submit" class="btn btn-primary w-100">Agregar al Carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<h2>Productos</h2>
+<a href="/products/productos" class="btn btn-primary mb-3">Ver Productos</a>
+<div class="row">
+    {{#each products}}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                    <p><strong>Precio:</strong> ${{this.price}}</p>
+                    <form action="/api/carts/{{user.cart}}/products" method="POST">
+                        <input type="hidden" name="productId" value="{{this._id}}">
+                        <input type="number" name="quantity" class="form-control mb-2" placeholder="Cantidad" min="1" max="{{this.stock}}" required>
+                        <button type="submit" class="btn btn-primary w-100">Agregar al Carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,40 @@
+<h2>{{category}}</h2>
+
+<div class="row">
+    {{#if items.length}}
+        {{#each items}}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <p><strong>Precio:</strong> ${{this.price}}</p>
+                        {{#if user.cart}}
+                            <form action="/api/carts/{{user.cart}}/products" method="POST" onsubmit="return validateCartId('{{user.cart}}')">
+                                <input type="hidden" name="productId" value="{{this._id}}">
+                                <input type="number" name="quantity" class="form-control mb-2" placeholder="Cantidad" min="1" max="{{this.stock}}" required>
+                                <button type="submit" class="btn btn-primary w-100">Agregar al Carrito</button>
+                            </form>
+                        {{else}}
+                            <p class="text-danger">Carrito no disponible. Por favor, inicia sesión.</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <div class="col-12">
+            <div class="alert alert-info">No hay elementos disponibles en esta categoría.</div>
+        </div>
+    {{/if}}
+</div>
+
+<script>
+function validateCartId(cartId) {
+    if (!cartId || cartId === "undefined") {
+        alert("Error: No se puede agregar al carrito porque el ID del carrito no está definido.");
+        return false;
+    }
+    return true;
+}
+</script>

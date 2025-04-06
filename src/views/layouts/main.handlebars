@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commit 70415</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2D333B;
+            --primary-hover: #444C56;
+            --accent-color: #539BF5;
+            --success-color: #3FB950;
+            --warning-color: #F7B731;
+            --danger-color: #F85149;
+            --info-color: #58A6FF;
+        }
+        body {
+            background-color: #F6F8FA;
+        }
+        .navbar-dark.bg-primary {
+            background: linear-gradient(145deg, #2D333B, #444C56);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(145deg, var(--accent-color), #4182D7);
+            border: none;
+            box-shadow: 0 2px 5px rgba(83,155,245,0.3);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #4182D7, var(--accent-color));
+            transform: translateY(-1px);
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .text-primary { color: var(--accent-color) !important; }
+        .text-success { color: var(--success-color) !important; }
+        .text-warning { color: var(--warning-color) !important; }
+        .text-danger { color: var(--danger-color) !important; }
+        .text-info { color: var(--info-color) !important; }
+        .navbar-brand {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .navbar-brand i {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(83,155,245,0.5);
+        }
+        .navbar-brand small {
+            color: var(--warning-color) !important;
+            font-weight: 500;
+            opacity: 0.9;
+            text-shadow: 0 0 10px rgba(247,183,49,0.3);
+        }
+        .navbar-brand:hover small {
+            opacity: 1;
+        }
+        .alert {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .alert-info {
+            background: linear-gradient(145deg, var(--info-color), #4B96E5);
+            color: white;
+        }
+        input.form-control {
+            border: 2px solid #E1E4E8;
+            transition: all 0.3s;
+        }
+        input.form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(83,155,245,0.2);
+        }
+        .btn-danger {
+            background: linear-gradient(145deg, var(--danger-color), #E63E37);
+            border: none;
+        }
+        .btn-danger:hover {
+            background: linear-gradient(145deg, #E63E37, var(--danger-color));
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-code-branch"></i> Commit 70415
+                <small class="ms-2" style="font-size: 0.9em;">Commits en tiempo real</small>
+            </a>
+            <div class="ms-auto">
+                <a href="/products" class="btn btn-light">Productos</a>
+                {{#if user.cart}}
+                    <a href="/cart/{{user.cart}}" class="btn btn-light">Mi Carrito</a>
+                {{else}}
+                    <a href="#" class="btn btn-light disabled">Carrito no disponible</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {{{body}}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

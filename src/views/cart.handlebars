@@ -1,0 +1,33 @@
+<h2>Mi Carrito</h2>
+
+<div class="row">
+    {{#if cart.products.length}}
+        <div class="col-md-8">
+            <ul class="list-group">
+                {{#each cart.products}}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{this.product.name}}</h5>
+                            <p>{{this.product.description}}</p>
+                            <p><strong>Precio:</strong> ${{this.product.price}}</p>
+                            <p><strong>Cantidad:</strong> {{this.quantity}}</p>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">Total: ${{multiply this.product.price this.quantity}}</span>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total: ${{calculateTotal cart.products}}</h4>
+                    <a href="/api/carts/{{cart._id}}/purchase" class="btn btn-success w-100">Finalizar Compra</a>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="col-12">
+            <div class="alert alert-info">Tu carrito está vacío.</div>
+        </div>
+    {{/if}}
+</div>

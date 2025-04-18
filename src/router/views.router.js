@@ -62,14 +62,22 @@ router.get("/products", passport.authenticate('jwt', { session: false }), async 
         let cart = await CartModel.findOne({ user: req.user._id });
         if (!cart) {
             cart = await CartModel.create({ user: req.user._id, products: [] });
+            console.log(`Nuevo carrito creado para el usuario ${req.user._id}: ${cart._id}`);
         }
 
         const services = await ProductModel.find({ category: "Servicio" });
         const products = await ProductModel.find({ category: "Producto" });
 
-        res.render("products", { services, products, user: { ...req.user.toObject(), cart: cart._id } });
+        res.render("products", { 
+            services, 
+            products, 
+            user: { 
+                ...req.user.toObject(), 
+                cart: cart._id.toString() 
+            } 
+        });
     } catch (error) {
-        console.error(error);
+        console.error("Error al cargar los productos:", error);
         res.status(500).send("Error al cargar los productos");
     }
 });

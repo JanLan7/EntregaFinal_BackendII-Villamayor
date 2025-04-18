@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import passport from "passport";
 import bcrypt from "bcrypt";
 import UserModel from "../models/user.model.js";
+import UserDTO from "../dtos/user.dto.js";
 
 const router = Router();
 
@@ -56,7 +57,8 @@ router.post("/login", async(req,res)=>{
 
 //ruta para obtener el usuario actual
 router.get("/current", passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.json(req.user);
+    const userDTO = new UserDTO(req.user);
+    res.json(userDTO);
 });
 
 //logout
